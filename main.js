@@ -1,6 +1,6 @@
 // ===== CONFIG =====
 // Replace with your actual n8n webhook URL
-const WEBHOOK_URL = 'https://YOUR-N8N-DOMAIN.com/webhook/atoz-quote';
+const WEBHOOK_URL = 'https://n8n.outlander.ventures/webhook/atoz-quote';
 
 // Navbar scroll
 window.addEventListener('scroll', () => {
