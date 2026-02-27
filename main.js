@@ -1,8 +1,9 @@
 // ===== CONFIG =====
-// Replace with your actual n8n webhook URL
-const WEBHOOK_URL = 'https://n8n.outlander.ventures/webhook/atoz-quote';
+// Replace YOUR-N8N-DOMAIN with your actual n8n instance domain
+// Your webhook path from n8n: /webhook/atoz-quote
+const WEBHOOK_URL = 'https://YOUR-N8N-DOMAIN.com/webhook/atoz-quote';
 
-// Navbar scroll
+// ===== NAV =====
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
@@ -27,7 +28,7 @@ links.querySelectorAll('a:not(.dropdown-toggle)').forEach(link => {
   link.addEventListener('click', () => links.classList.remove('open'));
 });
 
-// FAQ accordion
+// ===== FAQ ACCORDION =====
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.parentElement;
@@ -99,7 +100,7 @@ if (form) {
   });
 }
 
-// Scroll reveal
+// ===== SCROLL REVEAL =====
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
