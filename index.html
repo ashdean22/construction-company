@@ -115,18 +115,6 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
 .hero-trust-item { display: flex; align-items: center; gap: 8px; color: var(--stone-500); font-size: 0.8rem; }
 .hero-trust-item svg { width: 16px; height: 16px; color: var(--accent); }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-.svc-hero { padding: 140px 24px 72px; background: var(--black); position: relative; overflow: hidden; }
-.svc-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 60%, rgba(184,134,11,0.06), transparent 60%); }
-.svc-hero .section-inner { position: relative; z-index: 2; }
-.svc-hero .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 0.8rem; animation: fadeInUp 0.6s ease both; }
-.svc-hero .breadcrumb a { color: var(--stone-500); text-decoration: none; transition: color 0.2s; }
-.svc-hero .breadcrumb a:hover { color: var(--stone-300); }
-.svc-hero .breadcrumb span { color: var(--stone-600); }
-.svc-hero .breadcrumb .current { color: var(--accent-light); }
-.svc-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 4rem); color: var(--white); line-height: 1.1; max-width: 700px; margin-bottom: 18px; letter-spacing: -0.02em; animation: fadeInUp 0.6s ease 0.1s both; }
-.svc-hero h1 em { font-style: italic; color: var(--accent-light); }
-.svc-hero-sub { font-size: 1.1rem; color: var(--stone-400); max-width: 520px; line-height: 1.7; font-weight: 300; margin-bottom: 32px; animation: fadeInUp 0.6s ease 0.2s both; }
-.svc-hero .hero-buttons { animation: fadeInUp 0.6s ease 0.3s both; }
 .services-section { padding: 88px 24px; background: var(--white); }
 .services-header { margin-bottom: 48px; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -153,19 +141,19 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
 .story-text p { font-size: 1rem; color: var(--stone-600); line-height: 1.8; margin-bottom: 16px; font-weight: 300; }
 .story-text p:first-of-type { font-size: 1.05rem; color: var(--stone-700); }
 .story-text .scripture { font-family: var(--serif); font-style: italic; color: var(--stone-700); font-size: 1.02rem; border-left: 3px solid var(--accent); padding-left: 20px; margin: 24px 0; }
-.svc-content { padding: 80px 24px; }
-.svc-content.alt { background: var(--stone-100); }
-.svc-content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-.svc-content h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--black); margin-bottom: 16px; line-height: 1.2; }
-.svc-content p { font-size: 0.95rem; color: var(--stone-600); line-height: 1.8; margin-bottom: 14px; font-weight: 300; }
-.svc-what-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-.svc-what-list li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--stone-700); font-weight: 400; }
-.svc-what-list li::before { content: '✓'; color: var(--accent); font-weight: 700; font-size: 0.8rem; flex-shrink: 0; }
-.svc-areas-bar { padding: 56px 24px; background: var(--stone-900); text-align: center; }
-.svc-areas-bar .section-title { color: var(--white); font-size: clamp(1.4rem, 2.5vw, 1.8rem); margin-bottom: 20px; }
-.svc-areas-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 700px; margin: 0 auto; }
-.svc-areas-tags span { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--stone-300); padding: 8px 18px; border-radius: 100px; font-size: 0.85rem; font-weight: 400; transition: all 0.2s; }
-.svc-areas-tags span:hover { border-color: var(--accent); color: var(--white); }
+
+/* === MISSION PROMISE SECTION === */
+.promise-section { padding: 72px 24px; background: var(--white); }
+.promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.promise-card { text-align: center; padding: 24px 16px; }
+.promise-icon { width: 48px; height: 48px; background: rgba(184,134,11,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+.promise-icon svg { width: 22px; height: 22px; color: var(--accent); }
+.promise-card h3 { font-family: var(--serif); font-size: 1.1rem; color: var(--black); margin-bottom: 8px; }
+.promise-card p { font-size: 0.88rem; color: var(--stone-500); line-height: 1.6; font-weight: 300; }
+@media (max-width: 700px) {
+  .promise-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+}
+
 .book-section { padding: 88px 24px; background: var(--black); position: relative; overflow: hidden; }
 .book-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(184,134,11,0.05), transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.02), transparent 40%); }
 .book-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; position: relative; z-index: 2; }
@@ -219,9 +207,8 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
   .nav-links.open .dropdown.open .dropdown-menu { display: block; }
   .services-grid { grid-template-columns: 1fr; }
   .service-card.featured { grid-column: span 1; }
-  .story-teaser-grid, .svc-content-grid, .book-grid { grid-template-columns: 1fr; }
+  .story-teaser-grid, .book-grid { grid-template-columns: 1fr; }
   .story-visual { height: 260px; }
-  .svc-what-list { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .hero-trust { flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -256,30 +243,55 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
     </div>
   </nav>
 
+  <!-- ===== HERO — Personal, mission-first ===== -->
   <section class="hero">
     <div class="hero-grid"></div>
     <div class="hero-content">
-      <div class="hero-badge"><span class="dot"></span> Serving Lynchburg & Surrounding Areas</div>
-      <h1>Your Home Deserves <em>Real</em> Solutions.</h1>
-      <p class="hero-sub">From window therapy to roofing, flooring, landscaping, and everything in between — A&nbsp;to&nbsp;Z Solutions is Lynchburg's dependable partner for every home need.</p>
+      <div class="hero-badge"><span class="dot"></span> Lynchburg, VA &amp; Surrounding Areas</div>
+      <h1>We Can Help You <em>With That.</em></h1>
+      <p class="hero-sub">We started A&nbsp;to&nbsp;Z Solutions because our neighbors deserved better — better service, better communication, better results. Whatever your home needs, we'll figure it out and get it done right.</p>
       <div class="hero-buttons">
         <a href="#book" class="btn-primary">Get Your Free Quote →</a>
-        <a href="#services" class="btn-secondary">Explore Services</a>
+        <a href="#story" class="btn-secondary">Why We Do This</a>
       </div>
       <div class="hero-trust">
         <div class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Licensed & Insured</div>
-        <div class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Locally Owned</div>
+        <div class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Locally Owned & Operated</div>
         <div class="hero-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 5-Star Service</div>
       </div>
     </div>
   </section>
 
+  <!-- ===== OUR PROMISE — mission-driven value props (Pink's-inspired) ===== -->
+  <section class="promise-section">
+    <div class="section-inner">
+      <div class="promise-grid">
+        <div class="promise-card">
+          <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>We Respect Your Time</h3>
+          <p>We show up when we say we will. No vague windows, no ghosting. If something changes, you'll hear from us — not the other way around.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h3>We Treat Your Home Like Ours</h3>
+          <p>We're careful with your property, clean up after ourselves, and make sure you're satisfied before we leave. That's not a policy — it's how we were raised.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <h3>We're Here to Serve</h3>
+          <p>This company was built to love our neighbors well. We're not here to upsell you or cut corners — we're here because this is how we live out our faith.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
   <section class="services-section" id="services">
     <div class="section-inner">
       <div class="services-header">
         <div class="section-label">What We Do</div>
-        <h2 class="section-title">Home Services, Solved.</h2>
-        <p class="section-desc">Whatever your home needs across Lynchburg, Forest, Bedford, Amherst, and beyond.</p>
+        <h2 class="section-title">Whatever Your Home Needs</h2>
+        <p class="section-desc">From one small fix to a full renovation — we've got the tools, the team, and the work ethic to get it done right. Serving Lynchburg, Forest, Bedford, Amherst, and beyond.</p>
       </div>
       <div class="services-grid">
         <a href="window-therapy.html" class="service-card featured">
@@ -288,42 +300,46 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
           <div class="sc-desc">Professional window treatments, repair, replacement, and installation. Blinds, shutters, shades, and full window renovation across the Lynchburg area.</div>
           <div class="sc-link">Learn more →</div>
         </a>
-        <a href="roofing.html" class="service-card"><div class="sc-title">Roofing</div><div class="sc-desc">Repair, replacement, and inspection — protecting your home from the top down.</div><div class="sc-link">Learn more →</div></a>
-        <a href="flooring.html" class="service-card"><div class="sc-title">Flooring</div><div class="sc-desc">Hardwood, tile, laminate, vinyl — installation and repair for every room.</div><div class="sc-link">Learn more →</div></a>
-        <a href="landscaping.html" class="service-card"><div class="sc-title">Landscaping</div><div class="sc-desc">Lawn care, garden design, patios, deck building, and backyard transformations.</div><div class="sc-link">Learn more →</div></a>
-        <a href="cleaning.html" class="service-card"><div class="sc-title">Cleaning Services</div><div class="sc-desc">Residential deep cleans, move-in/out, and recurring maintenance.</div><div class="sc-link">Learn more →</div></a>
-        <a href="general-construction.html" class="service-card"><div class="sc-title">General Construction</div><div class="sc-desc">Remodeling, additions, decks, drywall, painting — no job too small.</div><div class="sc-link">Learn more →</div></a>
+        <a href="roofing.html" class="service-card"><div class="sc-title">Roofing</div><div class="sc-desc">Repair, replacement, and honest inspections — protecting your home from the top down.</div><div class="sc-link">Learn more →</div></a>
+        <a href="flooring.html" class="service-card"><div class="sc-title">Flooring</div><div class="sc-desc">Hardwood, tile, laminate, vinyl — quality installation and repair for every room in your house.</div><div class="sc-link">Learn more →</div></a>
+        <a href="landscaping.html" class="service-card"><div class="sc-title">Landscaping</div><div class="sc-desc">Lawn care, garden design, patios, decks, and backyard transformations you'll actually enjoy.</div><div class="sc-link">Learn more →</div></a>
+        <a href="cleaning.html" class="service-card"><div class="sc-title">Cleaning Services</div><div class="sc-desc">Deep cleans, move-in/out, and recurring service — so you can focus on everything else.</div><div class="sc-link">Learn more →</div></a>
+        <a href="general-construction.html" class="service-card"><div class="sc-title">General Construction</div><div class="sc-desc">Remodeling, additions, decks, drywall, painting — no job too big, no job too small.</div><div class="sc-link">Learn more →</div></a>
       </div>
     </div>
   </section>
 
+  <!-- ===== OUR STORY — expanded, personable, mission-centered ===== -->
   <section class="story-teaser" id="story">
     <div class="section-inner">
       <div class="story-teaser-grid">
         <div class="story-visual"><div class="story-quote">"We can help you <em>with that.</em>"</div></div>
         <div class="story-text">
           <div class="section-label">Our Story</div>
-          <h2 class="section-title">Born from a Real Need</h2>
-          <p>It started when our founder bought his first house and overheard a woman frustrated with bad contractors. That moment sparked an idea — and a company. We completed 36 jobs for her and saw a clear need in our community.</p>
+          <h2 class="section-title">It Started with a Conversation</h2>
+          <p>When our founder bought his first house, he overheard a woman at the store — frustrated, exhausted, and fed up with contractors who wouldn't return her calls. He walked up and said five words that changed everything: <strong>"We can help you with that."</strong></p>
+          <p>That one conversation turned into 36 different jobs for a single homeowner. And it made something clear: there's a real need in our community for people who just show up, do good work, and treat others the way they want to be treated.</p>
           <div class="scripture">"Love the Lord your God with all your heart, and love your neighbor as yourself."</div>
-          <p>This business is how we live that out — by providing dependable solutions to homeowners across Lynchburg and the surrounding communities.</p>
+          <p>That's the heartbeat of A to Z Solutions. We're not a big corporation. We're your neighbors — and this business is how we serve our community. Every job we take, from hanging a door to rebuilding a roof, is a chance to live that out.</p>
+          <p style="margin-top: 8px;"><a href="#book" class="btn-primary-dark" style="margin-top: 12px;">Let Us Help You →</a></p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ===== BOOKING FORM ===== -->
   <section class="book-section" id="book">
     <div class="section-inner">
       <div class="book-grid">
         <div class="book-info">
           <div class="section-label">Get Started</div>
-          <h2 class="section-title">Request Your Free Quote</h2>
-          <p class="section-desc">Tell us about your project and we'll respond with a solution — no pressure, no runaround.</p>
+          <h2 class="section-title">Tell Us What You Need</h2>
+          <p class="section-desc">No pressure, no runaround. Just fill out this quick form and we'll get back to you within 24 hours with a clear plan and honest price. It's that simple.</p>
           <div class="book-benefits">
-            <div class="book-benefit"><div class="check">✓</div> Free estimates — no hidden fees</div>
-            <div class="book-benefit"><div class="check">✓</div> Response within 24 hours</div>
+            <div class="book-benefit"><div class="check">✓</div> Free estimates — always, no hidden fees</div>
+            <div class="book-benefit"><div class="check">✓</div> We respond within 24 hours — usually sooner</div>
             <div class="book-benefit"><div class="check">✓</div> Serving Lynchburg, Forest, Bedford & beyond</div>
-            <div class="book-benefit"><div class="check">✓</div> No job too big or too small</div>
+            <div class="book-benefit"><div class="check">✓</div> No job too big or too small — we mean it</div>
           </div>
         </div>
         <form class="book-form" id="bookingForm">
@@ -336,14 +352,14 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
             <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(434) 555-1234" required></div>
           </div>
           <div class="form-group">
-            <label for="service">Service Needed</label>
+            <label for="service">What Do You Need Help With?</label>
             <select id="service" name="service" required>
-              <option value="" disabled selected>Select a service</option>
+              <option value="" disabled selected>Pick a service</option>
               <option>Window Therapy</option><option>Roofing</option><option>Flooring</option>
               <option>Landscaping</option><option>Cleaning Services</option><option>General Construction</option><option>Other</option>
             </select>
           </div>
-          <div class="form-group"><label for="description">What are you looking to get done?</label><textarea id="description" name="description" placeholder="Describe your project or problem..." required></textarea></div>
+          <div class="form-group"><label for="description">Tell Us About Your Project</label><textarea id="description" name="description" placeholder="What's going on? Don't worry about getting it perfect — just give us the basics and we'll figure out the rest." required></textarea></div>
           <div class="form-row">
             <div class="form-group">
               <label for="timeline">Timeline</label>
@@ -362,15 +378,16 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
             </div>
           </div>
           <button type="submit" class="form-submit">Submit Request — It's Free</button>
-          <div class="form-note">We respond within 24 hours.</div>
+          <div class="form-note">We'll get back to you within 24 hours. Usually same day.</div>
         </form>
       </div>
     </div>
   </section>
 
+  <!-- ===== CTA BANNER — personal close ===== -->
   <div class="cta-banner">
-    <h2>Dependable Home Services — From A to Z</h2>
-    <p>Lynchburg · Forest · Bedford · Amherst · Madison Heights · Rustburg · Altavista · Appomattox</p>
+    <h2>Your Neighbors. Your Home Team.</h2>
+    <p>Serving Lynchburg · Forest · Bedford · Amherst · Madison Heights · Rustburg · Altavista · Appomattox</p>
   </div>
 
   <footer>
@@ -378,7 +395,7 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="nav-logo">A to Z <span>Solutions</span></a>
-          <p>Dependable home services for homeowners across Lynchburg, Virginia and surrounding communities.</p>
+          <p>We're your neighbors — serving homeowners across Lynchburg, Virginia and the surrounding communities with honest work and dependable service.</p>
         </div>
         <div class="footer-col">
           <h4>Services</h4>
