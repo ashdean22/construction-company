@@ -155,6 +155,26 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.2); }
   .promise-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
 }
 
+/* ===== QUOTE EXPLAINER — how it works ===== */
+.quote-explainer { padding: 72px 24px; background: var(--black); position: relative; overflow: hidden; }
+.quote-explainer::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(59,107,69,0.06), transparent 60%); }
+.quote-explainer .section-inner { position: relative; z-index: 2; }
+.quote-explainer .section-label { color: var(--green-light); text-align: center; }
+.quote-explainer .section-title { color: var(--white); text-align: center; max-width: 600px; margin: 0 auto 12px; }
+.quote-explainer .section-desc { color: var(--warm-400); text-align: center; max-width: 520px; margin: 0 auto 48px; }
+.qe-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+.qe-steps::before { content: ''; position: absolute; top: 36px; left: calc(16.67% + 24px); right: calc(16.67% + 24px); height: 2px; background: linear-gradient(90deg, var(--green), var(--green-light), var(--green)); opacity: 0.3; }
+.qe-step { text-align: center; padding: 0 24px; position: relative; }
+.qe-num { width: 72px; height: 72px; border-radius: 50%; background: var(--green-muted-strong); border: 2px solid rgba(59,107,69,0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--green-light); position: relative; z-index: 2; transition: all 0.3s ease; }
+.qe-step:hover .qe-num { background: var(--green); color: var(--white); border-color: var(--green); transform: scale(1.08); }
+.qe-step h3 { font-family: var(--serif); font-size: 1.05rem; color: var(--white); margin-bottom: 8px; font-weight: 600; }
+.qe-step p { font-size: 0.85rem; color: var(--warm-400); line-height: 1.6; font-weight: 300; max-width: 260px; margin: 0 auto; }
+.qe-cta { text-align: center; margin-top: 40px; }
+@media (max-width: 700px) {
+  .qe-steps { grid-template-columns: 1fr; gap: 36px; max-width: 320px; margin: 0 auto; }
+  .qe-steps::before { display: none; }
+}
+
 /* ===== SERVICES — cream-light bg ===== */
 .services-section { padding: 88px 24px; background: var(--cream-light); }
 .services-header { margin-bottom: 48px; }
@@ -184,6 +204,28 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.2); }
 .story-text p { font-size: 1rem; color: var(--warm-600); line-height: 1.8; margin-bottom: 16px; font-weight: 300; }
 .story-text p:first-of-type { font-size: 1.05rem; color: var(--warm-700); }
 .story-text .scripture { font-family: var(--serif); font-style: italic; color: var(--warm-700); font-size: 1.02rem; border-left: 3px solid var(--green); padding-left: 20px; margin: 24px 0; font-weight: 400; }
+
+/* ===== QUOTE PROCESS EXPLAINER ===== */
+.quote-process { padding: 72px 24px; background: var(--cream); }
+.quote-process-header { text-align: center; margin-bottom: 48px; }
+.quote-process-header .section-desc { margin: 0 auto; }
+.quote-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
+.quote-steps::before { content: ''; position: absolute; top: 40px; left: 12%; right: 12%; height: 2px; background: var(--warm-200); z-index: 0; }
+.quote-step { text-align: center; position: relative; z-index: 1; }
+.quote-step-num { width: 80px; height: 80px; border-radius: 50%; background: var(--white); border: 2px solid var(--green); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; transition: all 0.3s ease; }
+.quote-step:hover .quote-step-num { background: var(--green); border-color: var(--green); }
+.quote-step:hover .quote-step-num svg { color: var(--white); }
+.quote-step-num svg { width: 32px; height: 32px; color: var(--green); transition: color 0.3s ease; }
+.quote-step h3 { font-family: var(--serif); font-size: 1.05rem; color: var(--black); margin-bottom: 6px; font-weight: 600; }
+.quote-step p { font-size: 0.82rem; color: var(--warm-500); line-height: 1.5; font-weight: 300; max-width: 200px; margin: 0 auto; }
+.quote-step-tag { display: inline-block; margin-top: 10px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--green); background: var(--green-muted); padding: 3px 10px; border-radius: 100px; }
+@media (max-width: 700px) {
+  .quote-steps { grid-template-columns: 1fr 1fr; gap: 32px 16px; }
+  .quote-steps::before { display: none; }
+}
+@media (max-width: 480px) {
+  .quote-steps { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+}
 
 /* ===== BOOKING — dark section for contrast ===== */
 .book-section { padding: 88px 24px; background: var(--black); position: relative; overflow: hidden; }
@@ -274,8 +316,8 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="/roofing.mp4" type="video/mp4">
+    <video class="hero-video" autoplay muted loop playsinline poster="hero-poster.jpg">
+      <source src="roofing.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -317,6 +359,35 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
     </div>
   </section>
 
+  <!-- ===== QUOTE EXPLAINER ===== -->
+  <section class="quote-explainer">
+    <div class="section-inner">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Getting a Quote Is Easy</h2>
+      <p class="section-desc">No phone tag. No pressure. Just a simple process that respects your time.</p>
+      <div class="qe-steps">
+        <div class="qe-step">
+          <div class="qe-num">1</div>
+          <h3>Tell Us What's Going On</h3>
+          <p>Fill out our quick form — just the basics. Leaky roof, new floors, overgrown yard? We'll take it from there.</p>
+        </div>
+        <div class="qe-step">
+          <div class="qe-num">2</div>
+          <h3>We'll Reach Out Within 24hrs</h3>
+          <p>Our team reviews your request and gets back to you with a clear plan and honest price. No surprises, no hidden fees.</p>
+        </div>
+        <div class="qe-step">
+          <div class="qe-num">3</div>
+          <h3>We Show Up &amp; Get It Done</h3>
+          <p>Once you approve, we schedule the work, show up on time, and don't leave until you're satisfied. That's it.</p>
+        </div>
+      </div>
+      <div class="qe-cta">
+        <a href="#book" class="btn-primary" style="background:var(--green);color:var(--white);">Get Your Free Quote →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== SERVICES ===== -->
   <section class="services-section" id="services">
     <div class="section-inner">
@@ -354,6 +425,43 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
           <div class="scripture">"Love the Lord your God with all your heart, and love your neighbor as yourself."</div>
           <p>That's the heartbeat of A to Z Solutions. We're not a big corporation. We're your neighbors — and this business is how we serve our community. Every job we take, from hanging a door to rebuilding a roof, is a chance to live that out.</p>
           <p style="margin-top: 8px;"><a href="#book" class="btn-primary" style="margin-top: 12px;">Let Us Help You →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW OUR QUOTE PROCESS WORKS ===== -->
+  <section class="quote-process">
+    <div class="section-inner">
+      <div class="quote-process-header">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Getting a Quote Is Easy</h2>
+        <p class="section-desc">No runaround. No pressure. Just four simple steps from your first message to the finished job.</p>
+      </div>
+      <div class="quote-steps">
+        <div class="quote-step">
+          <div class="quote-step-num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Tell Us What's Going On</h3>
+          <p>Fill out our quick form or give us a call. Don't worry about getting it perfect.</p>
+          <span class="quote-step-tag">Takes 2 min</span>
+        </div>
+        <div class="quote-step">
+          <div class="quote-step-num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg></div>
+          <h3>We Review &amp; Respond</h3>
+          <p>Our team looks at your request and gets back to you within 24 hours — usually same day.</p>
+          <span class="quote-step-tag">Within 24 hrs</span>
+        </div>
+        <div class="quote-step">
+          <div class="quote-step-num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Clear Quote, No Surprises</h3>
+          <p>You get an honest price upfront. No hidden fees, no bait-and-switch. You decide if we're the right fit.</p>
+          <span class="quote-step-tag">Always free</span>
+        </div>
+        <div class="quote-step">
+          <div class="quote-step-num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <h3>We Get It Done</h3>
+          <p>We show up on time, do quality work, and make sure you're happy before we leave.</p>
+          <span class="quote-step-tag">Satisfaction guaranteed</span>
         </div>
       </div>
     </div>
@@ -451,6 +559,6 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
       </div>
     </div>
   </footer>
-  <script type="module" src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
