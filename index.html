@@ -155,26 +155,6 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.2); }
   .promise-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
 }
 
-/* ===== QUOTE EXPLAINER — how it works ===== */
-.quote-explainer { padding: 72px 24px; background: var(--black); position: relative; overflow: hidden; }
-.quote-explainer::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(59,107,69,0.06), transparent 60%); }
-.quote-explainer .section-inner { position: relative; z-index: 2; }
-.quote-explainer .section-label { color: var(--green-light); text-align: center; }
-.quote-explainer .section-title { color: var(--white); text-align: center; max-width: 600px; margin: 0 auto 12px; }
-.quote-explainer .section-desc { color: var(--warm-400); text-align: center; max-width: 520px; margin: 0 auto 48px; }
-.qe-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
-.qe-steps::before { content: ''; position: absolute; top: 36px; left: calc(16.67% + 24px); right: calc(16.67% + 24px); height: 2px; background: linear-gradient(90deg, var(--green), var(--green-light), var(--green)); opacity: 0.3; }
-.qe-step { text-align: center; padding: 0 24px; position: relative; }
-.qe-num { width: 72px; height: 72px; border-radius: 50%; background: var(--green-muted-strong); border: 2px solid rgba(59,107,69,0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--green-light); position: relative; z-index: 2; transition: all 0.3s ease; }
-.qe-step:hover .qe-num { background: var(--green); color: var(--white); border-color: var(--green); transform: scale(1.08); }
-.qe-step h3 { font-family: var(--serif); font-size: 1.05rem; color: var(--white); margin-bottom: 8px; font-weight: 600; }
-.qe-step p { font-size: 0.85rem; color: var(--warm-400); line-height: 1.6; font-weight: 300; max-width: 260px; margin: 0 auto; }
-.qe-cta { text-align: center; margin-top: 40px; }
-@media (max-width: 700px) {
-  .qe-steps { grid-template-columns: 1fr; gap: 36px; max-width: 320px; margin: 0 auto; }
-  .qe-steps::before { display: none; }
-}
-
 /* ===== SERVICES — cream-light bg ===== */
 .services-section { padding: 88px 24px; background: var(--cream-light); }
 .services-header { margin-bottom: 48px; }
@@ -355,35 +335,6 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
           <h3>We're Here to Serve</h3>
           <p>This company was built to love our neighbors well. We're not here to upsell you or cut corners — we're here because this is how we live out our faith.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== QUOTE EXPLAINER ===== -->
-  <section class="quote-explainer">
-    <div class="section-inner">
-      <div class="section-label">How It Works</div>
-      <h2 class="section-title">Getting a Quote Is Easy</h2>
-      <p class="section-desc">No phone tag. No pressure. Just a simple process that respects your time.</p>
-      <div class="qe-steps">
-        <div class="qe-step">
-          <div class="qe-num">1</div>
-          <h3>Tell Us What's Going On</h3>
-          <p>Fill out our quick form — just the basics. Leaky roof, new floors, overgrown yard? We'll take it from there.</p>
-        </div>
-        <div class="qe-step">
-          <div class="qe-num">2</div>
-          <h3>We'll Reach Out Within 24hrs</h3>
-          <p>Our team reviews your request and gets back to you with a clear plan and honest price. No surprises, no hidden fees.</p>
-        </div>
-        <div class="qe-step">
-          <div class="qe-num">3</div>
-          <h3>We Show Up &amp; Get It Done</h3>
-          <p>Once you approve, we schedule the work, show up on time, and don't leave until you're satisfied. That's it.</p>
-        </div>
-      </div>
-      <div class="qe-cta">
-        <a href="#book" class="btn-primary" style="background:var(--green);color:var(--white);">Get Your Free Quote →</a>
       </div>
     </div>
   </section>
