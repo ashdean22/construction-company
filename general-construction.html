@@ -38,34 +38,51 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --black: #0a0a0a;
+  --black: #1a1a18;
   --white: #fafaf9;
+  --cream: #f5f0e8;
+  --cream-dark: #ede6da;
+  --cream-light: #faf7f2;
+  --warm-100: #f5f0e8;
+  --warm-200: #e8e0d4;
+  --warm-300: #d4c9b8;
+  --warm-400: #b0a490;
+  --warm-500: #8a7e6e;
+  --warm-600: #6b6052;
+  --warm-700: #524839;
+  --warm-800: #3a3228;
+  --warm-900: #2a231c;
+  --green: #3B6B45;
+  --green-light: #5a8f66;
+  --green-dark: #2d5233;
+  --green-muted: rgba(59, 107, 69, 0.08);
+  --green-muted-strong: rgba(59, 107, 69, 0.15);
+  --accent: var(--green);
+  --accent-light: var(--green-light);
   --stone-50: #fafaf9;
-  --stone-100: #f5f5f4;
-  --stone-200: #e7e5e4;
-  --stone-300: #d6d3d1;
-  --stone-400: #a8a29e;
-  --stone-500: #78716c;
-  --stone-600: #57534e;
-  --stone-700: #44403c;
-  --stone-800: #292524;
-  --stone-900: #1c1917;
-  --accent: #b8860b;
-  --accent-light: #d4a843;
-  --serif: 'DM Serif Display', Georgia, serif;
+  --stone-100: #f5f0e8;
+  --stone-200: #e8e0d4;
+  --stone-300: #d4c9b8;
+  --stone-400: #b0a490;
+  --stone-500: #8a7e6e;
+  --stone-600: #6b6052;
+  --stone-700: #524839;
+  --stone-800: #3a3228;
+  --stone-900: #2a231c;
+  --serif: 'Fraunces', Georgia, serif;
   --sans: 'Outfit', system-ui, sans-serif;
 }
 html { scroll-behavior: smooth; }
 body { font-family: var(--sans); background: var(--white); color: var(--stone-800); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: all 0.3s ease; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(26,26,24,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: all 0.3s ease; }
 nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
 .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .nav-logo { font-family: var(--serif); font-size: 1.4rem; color: var(--white); text-decoration: none; letter-spacing: -0.02em; }
-.nav-logo span { color: var(--accent); }
+.nav-logo span { color: var(--green-light); }
 .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
 .nav-links a { color: var(--stone-300); text-decoration: none; font-size: 0.875rem; font-weight: 400; padding: 8px 14px; border-radius: 6px; transition: all 0.2s ease; letter-spacing: 0.01em; }
 .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
@@ -79,8 +96,8 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
 .dropdown-menu a:hover { background: rgba(255,255,255,0.06); color: var(--white); }
 .dropdown-menu .dm-label { display: block; font-weight: 500; color: var(--white); margin-bottom: 1px; }
 .dropdown-menu .dm-desc { font-size: 0.75rem; color: var(--stone-500); }
-.nav-cta { background: var(--white) !important; color: var(--black) !important; font-weight: 600 !important; padding: 9px 20px !important; border-radius: 8px !important; }
-.nav-cta:hover { background: var(--stone-200) !important; transform: translateY(-1px); }
+.nav-cta { background: var(--green) !important; color: var(--white) !important; font-weight: 600 !important; padding: 9px 20px !important; border-radius: 8px !important; }
+.nav-cta:hover { background: var(--green-light) !important; transform: translateY(-1px); }
 .mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
 .mobile-toggle span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s ease; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
@@ -178,8 +195,8 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
 .form-group textarea { resize: vertical; min-height: 90px; }
 .form-group input::placeholder, .form-group textarea::placeholder { color: var(--stone-600); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.form-submit { width: 100%; padding: 15px; background: var(--white); color: var(--black); border: none; border-radius: 10px; font-family: var(--sans); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s ease; margin-top: 6px; }
-.form-submit:hover { background: var(--stone-200); transform: translateY(-1px); }
+.form-submit { width: 100%; padding: 15px; background: var(--green); color: var(--white); border: none; border-radius: 10px; font-family: var(--sans); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s ease; margin-top: 6px; }
+.form-submit:hover { background: var(--green-light); transform: translateY(-1px); }
 .form-note { text-align: center; margin-top: 14px; font-size: 0.78rem; color: var(--stone-600); font-weight: 300; }
 .faq-section { padding: 80px 24px; }
 .faq-header { margin-bottom: 40px; }
