@@ -155,24 +155,40 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.2); }
   .promise-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
 }
 
-/* ===== SERVICES — cream-light bg ===== */
-.services-section { padding: 88px 24px; background: var(--cream-light); }
-.services-header { margin-bottom: 48px; }
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.service-card { background: var(--white); border: 1px solid var(--warm-200); border-radius: 14px; padding: 32px 24px; transition: all 0.3s ease; position: relative; overflow: hidden; text-decoration: none; color: inherit; display: block; }
-.service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green); transform: scaleX(0); transition: transform 0.3s ease; }
-.service-card:hover { border-color: var(--warm-300); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.05); }
-.service-card:hover::before { transform: scaleX(1); }
-.service-card.featured { background: var(--black); border-color: var(--warm-800); grid-column: span 2; }
+/* ===== SERVICES — 3D orbiting carousel ===== */
+.services-section { padding: 88px 24px; background: var(--cream-light); overflow: hidden; }
+.services-header { margin-bottom: 16px; }
+.carousel-container { position: relative; width: 100%; max-width: 1200px; margin: 0 auto; }
+.carousel-wrapper { position: relative; width: 100%; height: 580px; perspective: 1100px; perspective-origin: 50% 45%; cursor: grab; user-select: none; }
+.carousel-wrapper:active { cursor: grabbing; }
+.carousel-scene { position: absolute; width: 100%; height: 100%; transform-style: preserve-3d; }
+.carousel-center-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,107,69,0.07) 0%, rgba(59,107,69,0.02) 40%, transparent 70%); border-radius: 50%; pointer-events: none; }
+.service-card { position: absolute; width: 280px; height: auto; min-height: 200px; left: 50%; top: 50%; background: var(--white); border: 1px solid var(--warm-200); border-radius: 16px; padding: 28px 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; cursor: pointer; will-change: transform, opacity; transition: box-shadow 0.35s ease, border-color 0.35s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+.service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green); border-radius: 16px 16px 0 0; transform: scaleX(0); transition: transform 0.3s ease; }
+.service-card.card-front { box-shadow: 0 20px 60px rgba(0,0,0,0.1); border-color: var(--warm-300); }
+.service-card.card-front::before { transform: scaleX(1); }
+.service-card.featured { background: var(--black); border-color: var(--warm-800); }
 .service-card.featured .sc-title, .service-card.featured .sc-link { color: var(--white); }
 .service-card.featured .sc-desc { color: var(--warm-400); }
 .service-card.featured .sc-badge { background: var(--green-muted-strong); color: var(--green-light); }
 .service-card.featured::before { transform: scaleX(1); }
-.sc-badge { display: inline-block; background: var(--green-muted); color: var(--green); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 100px; margin-bottom: 14px; }
-.sc-title { font-family: var(--serif); font-size: 1.3rem; color: var(--black); margin-bottom: 8px; font-weight: 600; }
-.sc-desc { font-size: 0.88rem; color: var(--warm-500); line-height: 1.6; font-weight: 300; }
-.sc-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 0.85rem; font-weight: 500; color: var(--green); transition: gap 0.2s ease; }
-.service-card:hover .sc-link { gap: 10px; }
+.sc-badge { display: inline-block; background: var(--green-muted); color: var(--green); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 100px; margin-bottom: 12px; }
+.sc-icon { width: 40px; height: 40px; background: var(--green-muted-strong); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.sc-icon svg { width: 20px; height: 20px; color: var(--green); }
+.service-card.featured .sc-icon { background: rgba(90,143,102,0.15); }
+.service-card.featured .sc-icon svg { color: var(--green-light); }
+.sc-title { font-family: var(--serif); font-size: 1.2rem; color: var(--black); margin-bottom: 8px; font-weight: 600; }
+.sc-desc { font-size: 0.82rem; color: var(--warm-500); line-height: 1.6; font-weight: 300; flex: 1; }
+.sc-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 0.82rem; font-weight: 500; color: var(--green); transition: gap 0.25s ease; }
+.service-card.card-front:hover .sc-link { gap: 10px; }
+.carousel-controls { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 8px; }
+.carousel-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--warm-200); background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.25s ease; color: var(--warm-600); }
+.carousel-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-muted); transform: scale(1.05); }
+.carousel-btn svg { width: 18px; height: 18px; }
+.carousel-dots { display: flex; gap: 8px; align-items: center; }
+.carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--warm-200); transition: all 0.3s ease; cursor: pointer; }
+.carousel-dot.active { background: var(--green); width: 24px; border-radius: 4px; }
+.carousel-hint { font-size: 0.75rem; color: var(--warm-400); font-weight: 300; letter-spacing: 0.02em; }
 
 /* ===== STORY — warm tinted bg ===== */
 .story-teaser { padding: 88px 24px; background: var(--cream-dark); }
@@ -256,8 +272,8 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
   .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: var(--warm-900); padding: 16px 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .nav-links.open .dropdown-menu { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; background: transparent; border: none; padding: 0 0 0 16px; display: none; }
   .nav-links.open .dropdown.open .dropdown-menu { display: block; }
-  .services-grid { grid-template-columns: 1fr; }
-  .service-card.featured { grid-column: span 1; }
+  .carousel-wrapper { height: 500px; perspective: 800px; }
+  .service-card { width: 240px; padding: 22px 18px; min-height: 180px; }
   .story-teaser-grid, .book-grid { grid-template-columns: 1fr; }
   .story-visual { height: 260px; }
   .form-row { grid-template-columns: 1fr; }
@@ -347,18 +363,54 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
         <h2 class="section-title">Whatever Your Home Needs</h2>
         <p class="section-desc">From one small fix to a full renovation — we've got the tools, the team, and the work ethic to get it done right. Serving Lynchburg, Forest, Bedford, Amherst, and beyond.</p>
       </div>
-      <div class="services-grid">
-        <a href="window-therapy.html" class="service-card featured">
-          <div class="sc-badge">Featured Service</div>
-          <div class="sc-title">Window Therapy</div>
-          <div class="sc-desc">Professional window treatments, repair, replacement, and installation. Blinds, shutters, shades, and full window renovation across the Lynchburg area.</div>
-          <div class="sc-link">Learn more →</div>
-        </a>
-        <a href="roofing.html" class="service-card"><div class="sc-title">Roofing</div><div class="sc-desc">Repair, replacement, and honest inspections — protecting your home from the top down.</div><div class="sc-link">Learn more →</div></a>
-        <a href="flooring.html" class="service-card"><div class="sc-title">Flooring</div><div class="sc-desc">Hardwood, tile, laminate, vinyl — quality installation and repair for every room in your house.</div><div class="sc-link">Learn more →</div></a>
-        <a href="landscaping.html" class="service-card"><div class="sc-title">Landscaping</div><div class="sc-desc">Lawn care, garden design, patios, decks, and backyard transformations you'll actually enjoy.</div><div class="sc-link">Learn more →</div></a>
-        <a href="cleaning.html" class="service-card"><div class="sc-title">Cleaning Services</div><div class="sc-desc">Deep cleans, move-in/out, and recurring service — so you can focus on everything else.</div><div class="sc-link">Learn more →</div></a>
-        <a href="general-construction.html" class="service-card"><div class="sc-title">General Construction</div><div class="sc-desc">Remodeling, additions, decks, drywall, painting — no job too big, no job too small.</div><div class="sc-link">Learn more →</div></a>
+      <div class="carousel-container">
+        <div class="carousel-wrapper" id="carouselWrapper">
+          <div class="carousel-center-glow"></div>
+          <div class="carousel-scene" id="carouselScene">
+            <a href="window-therapy.html" class="service-card featured">
+              <div class="sc-badge">Featured Service</div>
+              <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+              <div class="sc-title">Window Therapy</div>
+              <div class="sc-desc">Professional window treatments, repair, replacement, and installation.</div>
+              <div class="sc-link">Learn more <span>→</span></div>
+            </a>
+            <a href="roofing.html" class="service-card">
+              <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+              <div class="sc-title">Roofing</div>
+              <div class="sc-desc">Repair, replacement, and honest inspections — protecting your home from the top down.</div>
+              <div class="sc-link">Learn more <span>→</span></div>
+            </a>
+            <a href="flooring.html" class="service-card">
+              <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="9"/><line x1="15" y1="9" x2="15" y2="15"/><line x1="9" y1="15" x2="9" y2="21"/></svg></div>
+              <div class="sc-title">Flooring</div>
+              <div class="sc-desc">Hardwood, tile, laminate, vinyl — quality installation and repair for every room.</div>
+              <div class="sc-link">Learn more <span>→</span></div>
+            </a>
+            <a href="landscaping.html" class="service-card">
+              <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M8 5.5a4 4 0 0 1 8 0c0 2.5-4 4.5-4 4.5S8 8 8 5.5z"/></svg></div>
+              <div class="sc-title">Landscaping</div>
+              <div class="sc-desc">Lawn care, garden design, patios, decks, and backyard transformations.</div>
+              <div class="sc-link">Learn more <span>→</span></div>
+            </a>
+            <a href="cleaning.html" class="service-card">
+              <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 4v6l2 2v10H8V12l2-2V4"/><path d="M10 4h4"/><path d="M7 20h10"/></svg></div>
+              <div class="sc-title">Cleaning Services</div>
+              <div class="sc-desc">Deep cleans, move-in/out, and recurring service for your home.</div>
+              <div class="sc-link">Learn more <span>→</span></div>
+            </a>
+            <a href="general-construction.html" class="service-card">
+              <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><rect x="9" y="14" width="6" height="6"/></svg></div>
+              <div class="sc-title">General Construction</div>
+              <div class="sc-desc">Remodeling, additions, decks, drywall, painting — no job too big or small.</div>
+              <div class="sc-link">Learn more <span>→</span></div>
+            </a>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carouselPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" id="carouselNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
       </div>
     </div>
   </section>
