@@ -122,8 +122,6 @@ document.querySelectorAll('.faq-item, .svc-what-list li, [data-reveal]').forEach
   const wrapper = document.getElementById('carouselWrapper');
   const scene = document.getElementById('carouselScene');
   const dotsContainer = document.getElementById('carouselDots');
-  const prevBtn = document.getElementById('carouselPrev');
-  const nextBtn = document.getElementById('carouselNext');
   if (!wrapper || !scene) return;
 
   const cards = Array.from(scene.querySelectorAll('.service-card'));
@@ -132,8 +130,8 @@ document.querySelectorAll('.faq-item, .svc-what-list li, [data-reveal]').forEach
 
   let currentAngle = 0;
   let targetAngle = 0;
-  let autoSpeed = 0.002;
-  let isHovering = false;
+  let autoSpeed = 0.005;
+  let cardHovered = false;
   let isDragging = false;
   let dragStartX = 0;
   let dragStartAngle = 0;
@@ -152,6 +150,11 @@ document.querySelectorAll('.faq-item, .svc-what-list li, [data-reveal]').forEach
     const card = cards[0];
     return { x: card.offsetWidth / 2, y: card.offsetHeight / 2 };
   }
+
+  cards.forEach((card) => {
+    card.addEventListener('mouseenter', () => { cardHovered = true; });
+    card.addEventListener('mouseleave', () => { cardHovered = false; });
+  });
 
   for (let i = 0; i < total; i++) {
     const dot = document.createElement('div');
@@ -201,15 +204,9 @@ document.querySelectorAll('.faq-item, .svc-what-list li, [data-reveal]').forEach
         closestDist = dist;
         closestIdx = i;
       }
-
-      card.classList.toggle('card-front', false);
     });
 
-    if (closestIdx !== frontIndex) {
-      frontIndex = closestIdx;
-    }
-    cards[frontIndex].classList.add('card-front');
-
+    frontIndex = closestIdx;
     dots.forEach((dot, i) => dot.classList.toggle('active', i === frontIndex));
   }
 
@@ -223,31 +220,16 @@ document.querySelectorAll('.faq-item, .svc-what-list li, [data-reveal]').forEach
       if (Math.abs(momentum) > 0.0001) {
         currentAngle += momentum * dt;
         momentum *= 0.94;
-      } else if (!isHovering) {
+      } else if (!cardHovered) {
         targetAngle += autoSpeed * dt;
       }
 
-      if (isHovering && Math.abs(momentum) < 0.0001) {
-        currentAngle += (targetAngle - currentAngle) * 0.08 * dt;
-      } else if (Math.abs(momentum) < 0.0001) {
-        currentAngle = targetAngle;
-      }
+      currentAngle += (targetAngle - currentAngle) * 0.08 * dt;
     }
 
     positionCards();
     requestAnimationFrame(animate);
   }
-
-  wrapper.addEventListener('mouseenter', () => {
-    isHovering = true;
-  });
-
-  wrapper.addEventListener('mouseleave', () => {
-    isHovering = false;
-    if (!isDragging) {
-      targetAngle = currentAngle;
-    }
-  });
 
   wrapper.addEventListener('mousedown', (e) => {
     if (e.target.closest('.service-card')) return;
@@ -275,10 +257,8 @@ document.querySelectorAll('.faq-item, .svc-what-list li, [data-reveal]').forEach
   });
 
   wrapper.addEventListener('touchstart', (e) => {
-    const touch = e.touches[0];
     isDragging = true;
-    isHovering = true;
-    dragStartX = touch.clientX;
+    dragStartX = e.touches[0].clientX;
     dragStartAngle = currentAngle;
     lastDragDelta = 0;
     momentum = 0;
@@ -286,8 +266,7 @@ document.querySelectorAll('.faq-item, .svc-what-list li, [data-reveal]').forEach
 
   wrapper.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
-    const touch = e.touches[0];
-    const dx = touch.clientX - dragStartX;
+    const dx = e.touches[0].clientX - dragStartX;
     const newAngle = dragStartAngle + dx * 0.005;
     lastDragDelta = newAngle - currentAngle;
     currentAngle = newAngle;
@@ -296,19 +275,9 @@ document.querySelectorAll('.faq-item, .svc-what-list li, [data-reveal]').forEach
 
   wrapper.addEventListener('touchend', () => {
     isDragging = false;
-    isHovering = false;
     momentum = lastDragDelta * 1.5;
     targetAngle = currentAngle;
   });
-
-  function nudge(direction) {
-    targetAngle += direction * angleStep;
-    currentAngle += (targetAngle - currentAngle) * 0.01;
-    momentum = 0;
-  }
-
-  prevBtn.addEventListener('click', () => nudge(1));
-  nextBtn.addEventListener('click', () => nudge(-1));
 
   positionCards();
   requestAnimationFrame(animate);

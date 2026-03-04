@@ -165,8 +165,8 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.2); }
 .carousel-center-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,107,69,0.07) 0%, rgba(59,107,69,0.02) 40%, transparent 70%); border-radius: 50%; pointer-events: none; }
 .service-card { position: absolute; width: 280px; height: auto; min-height: 200px; left: 50%; top: 50%; background: var(--white); border: 1px solid var(--warm-200); border-radius: 16px; padding: 28px 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; cursor: pointer; will-change: transform, opacity; transition: box-shadow 0.35s ease, border-color 0.35s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
 .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green); border-radius: 16px 16px 0 0; transform: scaleX(0); transition: transform 0.3s ease; }
-.service-card.card-front { box-shadow: 0 20px 60px rgba(0,0,0,0.1); border-color: var(--warm-300); }
-.service-card.card-front::before { transform: scaleX(1); }
+.service-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.1); border-color: var(--warm-300); }
+.service-card:hover::before { transform: scaleX(1); }
 .service-card.featured { background: var(--black); border-color: var(--warm-800); }
 .service-card.featured .sc-title, .service-card.featured .sc-link { color: var(--white); }
 .service-card.featured .sc-desc { color: var(--warm-400); }
@@ -180,15 +180,11 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.2); }
 .sc-title { font-family: var(--serif); font-size: 1.2rem; color: var(--black); margin-bottom: 8px; font-weight: 600; }
 .sc-desc { font-size: 0.82rem; color: var(--warm-500); line-height: 1.6; font-weight: 300; flex: 1; }
 .sc-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 0.82rem; font-weight: 500; color: var(--green); transition: gap 0.25s ease; }
-.service-card.card-front:hover .sc-link { gap: 10px; }
+.service-card:hover .sc-link { gap: 10px; }
 .carousel-controls { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 8px; }
-.carousel-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--warm-200); background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.25s ease; color: var(--warm-600); }
-.carousel-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-muted); transform: scale(1.05); }
-.carousel-btn svg { width: 18px; height: 18px; }
 .carousel-dots { display: flex; gap: 8px; align-items: center; }
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--warm-200); transition: all 0.3s ease; cursor: pointer; }
 .carousel-dot.active { background: var(--green); width: 24px; border-radius: 4px; }
-.carousel-hint { font-size: 0.75rem; color: var(--warm-400); font-weight: 300; letter-spacing: 0.02em; }
 
 /* ===== STORY — warm tinted bg ===== */
 .story-teaser { padding: 88px 24px; background: var(--cream-dark); }
@@ -407,9 +403,7 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
           </div>
         </div>
         <div class="carousel-controls">
-          <button class="carousel-btn" id="carouselPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
           <div class="carousel-dots" id="carouselDots"></div>
-          <button class="carousel-btn" id="carouselNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
       </div>
     </div>
