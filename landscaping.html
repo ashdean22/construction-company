@@ -81,8 +81,8 @@ body { font-family: var(--sans); background: var(--white); color: var(--stone-80
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(26,26,24,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: all 0.3s ease; }
 nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
 .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
-.nav-logo { display: flex; align-items: center; text-decoration: none; }
-.nav-logo img { height: 44px; width: auto; }
+.nav-logo { font-family: var(--serif); font-size: 1.4rem; color: var(--white); text-decoration: none; letter-spacing: -0.02em; }
+.nav-logo span { color: var(--green-light); }
 .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
 .nav-links a { color: var(--stone-300); text-decoration: none; font-size: 0.875rem; font-weight: 400; padding: 8px 14px; border-radius: 6px; transition: all 0.2s ease; letter-spacing: 0.01em; }
 .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
@@ -217,8 +217,7 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
 footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24px 28px; }
 .footer-inner { max-width: 1200px; margin: 0 auto; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-brand .nav-logo { display: inline-flex; margin-bottom: 12px; }
-.footer-brand .nav-logo img { height: 36px; width: auto; }
+.footer-brand .nav-logo { font-size: 1.3rem; display: inline-block; margin-bottom: 12px; }
 .footer-brand p { font-size: 0.85rem; line-height: 1.6; font-weight: 300; max-width: 280px; }
 .footer-col h4 { color: var(--white); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 14px; }
 .footer-col a { display: block; color: var(--stone-500); text-decoration: none; font-size: 0.85rem; padding: 3px 0; transition: color 0.2s ease; font-weight: 300; }
@@ -249,7 +248,7 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
 
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><img src="AtoZ_Logo2.png" alt="A to Z Solutions"></a>
+      <a href="index.html" class="nav-logo">A to Z <span>Solutions</span></a>
       <ul class="nav-links" id="navLinks">
         <li class="dropdown">
           <a href="index.html#services" class="dropdown-toggle">Services</a>
@@ -435,7 +434,7 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
     <div class="footer-inner">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo"><img src="AtoZ_Logo2.png" alt="A to Z Solutions"></a>
+          <a href="index.html" class="nav-logo">A to Z <span>Solutions</span></a>
           <p>Dependable home services for homeowners across Lynchburg, Virginia and surrounding communities.</p>
         </div>
         <div class="footer-col">
