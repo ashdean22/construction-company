@@ -100,114 +100,6 @@ if (form) {
   });
 }
 
-// ===== 3D ORBITING CAROUSEL =====
-(function() {
-  const scene = document.getElementById('carouselScene');
-  const wrapper = document.getElementById('carouselWrapper');
-  if (!scene || !wrapper) return;
-
-  const cards = scene.querySelectorAll('.service-card');
-  const total = cards.length;
-  const angleStep = (2 * Math.PI) / total;
-  const radiusX = 380;
-  const radiusZ = 280;
-  const tiltX = -12;
-  let angle = 0;
-  let speed = 0.003;
-  let targetSpeed = 0.003;
-  let paused = false;
-  let rafId = null;
-  let isDragging = false;
-  let dragStartX = 0;
-  let dragAngleStart = 0;
-
-  function positionCards() {
-    cards.forEach((card, i) => {
-      const cardAngle = angle + i * angleStep;
-      const x = Math.sin(cardAngle) * radiusX;
-      const z = Math.cos(cardAngle) * radiusZ;
-      const y = Math.sin(cardAngle) * 30;
-
-      const scale = (z + radiusZ) / (2 * radiusZ);
-      const mappedScale = 0.65 + scale * 0.35;
-      const mappedOpacity = 0.4 + scale * 0.6;
-      const zIndex = Math.round(scale * 100);
-
-      card.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateX(${tiltX}deg) scale(${mappedScale})`;
-      card.style.zIndex = zIndex;
-      card.style.opacity = mappedOpacity;
-      card.style.filter = scale < 0.5 ? `blur(${(1 - scale * 2) * 2}px)` : 'none';
-      card.style.pointerEvents = scale > 0.6 ? 'auto' : 'none';
-    });
-  }
-
-  function animate() {
-    if (!paused && !isDragging) {
-      speed += (targetSpeed - speed) * 0.05;
-      angle += speed;
-    }
-    positionCards();
-    rafId = requestAnimationFrame(animate);
-  }
-
-  wrapper.addEventListener('mouseenter', () => {
-    if (!isDragging) {
-      paused = true;
-      targetSpeed = 0;
-    }
-  });
-
-  wrapper.addEventListener('mouseleave', () => {
-    paused = false;
-    targetSpeed = 0.003;
-  });
-
-  wrapper.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.service-card')) return;
-    isDragging = true;
-    dragStartX = e.clientX;
-    dragAngleStart = angle;
-    wrapper.style.cursor = 'grabbing';
-    e.preventDefault();
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    const dx = e.clientX - dragStartX;
-    angle = dragAngleStart + dx * 0.005;
-  });
-
-  window.addEventListener('mouseup', () => {
-    if (isDragging) {
-      isDragging = false;
-      wrapper.style.cursor = '';
-    }
-  });
-
-  wrapper.addEventListener('touchstart', (e) => {
-    if (e.target.closest('.service-card')) return;
-    isDragging = true;
-    dragStartX = e.touches[0].clientX;
-    dragAngleStart = angle;
-    paused = true;
-  }, { passive: true });
-
-  wrapper.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    const dx = e.touches[0].clientX - dragStartX;
-    angle = dragAngleStart + dx * 0.005;
-  }, { passive: true });
-
-  wrapper.addEventListener('touchend', () => {
-    isDragging = false;
-    paused = false;
-    targetSpeed = 0.003;
-  });
-
-  positionCards();
-  animate();
-})();
-
 // ===== SCROLL REVEAL =====
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -224,3 +116,169 @@ document.querySelectorAll('.faq-item, .svc-what-list li, [data-reveal]').forEach
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
 });
+
+// ===== 3D ORBITING CAROUSEL =====
+(function() {
+  const wrapper = document.getElementById('carouselWrapper');
+  const scene = document.getElementById('carouselScene');
+  const dotsContainer = document.getElementById('carouselDots');
+  if (!wrapper || !scene) return;
+
+  const cards = Array.from(scene.querySelectorAll('.service-card'));
+  const total = cards.length;
+  const angleStep = (Math.PI * 2) / total;
+
+  let currentAngle = 0;
+  let targetAngle = 0;
+  let autoSpeed = 0.005;
+  let cardHovered = false;
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartAngle = 0;
+  let lastDragDelta = 0;
+  let momentum = 0;
+  let frontIndex = 0;
+
+  function getRadius() {
+    const w = wrapper.offsetWidth;
+    if (w < 600) return { x: 180, z: 160 };
+    if (w < 900) return { x: 280, z: 220 };
+    return { x: 400, z: 300 };
+  }
+
+  function getCardOffset() {
+    const card = cards[0];
+    return { x: card.offsetWidth / 2, y: card.offsetHeight / 2 };
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('mouseenter', () => { cardHovered = true; });
+    card.addEventListener('mouseleave', () => { cardHovered = false; });
+  });
+
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'carousel-dot';
+    dot.addEventListener('click', () => {
+      const targetCardAngle = -i * angleStep;
+      let diff = targetCardAngle - currentAngle;
+      diff = ((diff + Math.PI) % (Math.PI * 2)) - Math.PI;
+      if (diff < -Math.PI) diff += Math.PI * 2;
+      targetAngle = currentAngle + diff;
+      momentum = 0;
+    });
+    dotsContainer.appendChild(dot);
+  }
+  const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+  function positionCards() {
+    const r = getRadius();
+    const offset = getCardOffset();
+    let closestDist = Infinity;
+    let closestIdx = 0;
+
+    cards.forEach((card, i) => {
+      const a = currentAngle + i * angleStep;
+      const x = Math.sin(a) * r.x;
+      const z = Math.cos(a) * r.z;
+      const y = Math.sin(a * 0.5) * 20;
+
+      const normalizedZ = (z + r.z) / (2 * r.z);
+      const scale = 0.6 + normalizedZ * 0.4;
+      const opacity = 0.3 + normalizedZ * 0.7;
+
+      card.style.transform = `translate3d(${x - offset.x}px, ${y - offset.y}px, ${z}px) scale(${scale})`;
+      card.style.zIndex = Math.round(normalizedZ * 100);
+      card.style.opacity = opacity;
+
+      if (normalizedZ < 0.35) {
+        card.style.filter = `blur(${(0.35 - normalizedZ) * 6}px)`;
+        card.style.pointerEvents = 'none';
+      } else {
+        card.style.filter = 'none';
+        card.style.pointerEvents = 'auto';
+      }
+
+      const dist = Math.abs(Math.sin(a)) + (1 - Math.cos(a));
+      if (dist < closestDist) {
+        closestDist = dist;
+        closestIdx = i;
+      }
+    });
+
+    frontIndex = closestIdx;
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === frontIndex));
+  }
+
+  let lastTime = performance.now();
+
+  function animate(now) {
+    const dt = Math.min((now - lastTime) / 16.667, 3);
+    lastTime = now;
+
+    if (!isDragging) {
+      if (Math.abs(momentum) > 0.0001) {
+        currentAngle += momentum * dt;
+        momentum *= 0.94;
+      } else if (!cardHovered) {
+        targetAngle += autoSpeed * dt;
+      }
+
+      currentAngle += (targetAngle - currentAngle) * 0.08 * dt;
+    }
+
+    positionCards();
+    requestAnimationFrame(animate);
+  }
+
+  wrapper.addEventListener('mousedown', (e) => {
+    if (e.target.closest('.service-card')) return;
+    isDragging = true;
+    dragStartX = e.clientX;
+    dragStartAngle = currentAngle;
+    lastDragDelta = 0;
+    momentum = 0;
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - dragStartX;
+    const newAngle = dragStartAngle + dx * 0.004;
+    lastDragDelta = newAngle - currentAngle;
+    currentAngle = newAngle;
+    targetAngle = currentAngle;
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    momentum = lastDragDelta;
+  });
+
+  wrapper.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    dragStartX = e.touches[0].clientX;
+    dragStartAngle = currentAngle;
+    lastDragDelta = 0;
+    momentum = 0;
+  }, { passive: true });
+
+  wrapper.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const dx = e.touches[0].clientX - dragStartX;
+    const newAngle = dragStartAngle + dx * 0.005;
+    lastDragDelta = newAngle - currentAngle;
+    currentAngle = newAngle;
+    targetAngle = currentAngle;
+  }, { passive: true });
+
+  wrapper.addEventListener('touchend', () => {
+    isDragging = false;
+    momentum = lastDragDelta * 1.5;
+    targetAngle = currentAngle;
+  });
+
+  positionCards();
+  requestAnimationFrame(animate);
+})();
