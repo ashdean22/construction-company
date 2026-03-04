@@ -179,27 +179,27 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
 .svc-areas-tags span { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--stone-300); padding: 8px 18px; border-radius: 100px; font-size: 0.85rem; font-weight: 400; transition: all 0.2s; }
 .svc-areas-tags span:hover { border-color: var(--accent); color: var(--white); }
 .book-section { padding: 88px 24px; background: var(--black); position: relative; overflow: hidden; }
-.book-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(184,134,11,0.05), transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.02), transparent 40%); }
+.book-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(59,107,69,0.06), transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.02), transparent 40%); }
 .book-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; position: relative; z-index: 2; }
-.book-info .section-label { color: var(--accent-light); }
+.book-info .section-label { color: var(--green-light); }
 .book-info .section-title { color: var(--white); }
-.book-info .section-desc { color: var(--stone-400); }
+.book-info .section-desc { color: var(--warm-400); }
 .book-benefits { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
-.book-benefit { display: flex; align-items: center; gap: 12px; color: var(--stone-300); font-size: 0.88rem; font-weight: 300; }
-.book-benefit .check { width: 20px; height: 20px; background: rgba(184,134,11,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent-light); font-size: 0.7rem; }
+.book-benefit { display: flex; align-items: center; gap: 12px; color: var(--warm-300); font-size: 0.88rem; font-weight: 300; }
+.book-benefit .check { width: 20px; height: 20px; background: var(--green-muted-strong); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--green-light); font-size: 0.7rem; }
 .book-form { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 36px; }
 .form-group { margin-bottom: 18px; }
-.form-group label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--stone-300); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.05em; }
+.form-group label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--warm-300); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.05em; }
 .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 13px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: var(--white); font-family: var(--sans); font-size: 0.93rem; transition: all 0.2s ease; outline: none; font-weight: 300; }
-.form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2378716c' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
-.form-group select option { background: var(--stone-900); color: var(--white); }
-.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); background: rgba(255,255,255,0.06); }
+.form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238a7e6e' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+.form-group select option { background: var(--warm-900); color: var(--white); }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--green); background: rgba(255,255,255,0.06); }
 .form-group textarea { resize: vertical; min-height: 90px; }
-.form-group input::placeholder, .form-group textarea::placeholder { color: var(--stone-600); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--warm-600); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .form-submit { width: 100%; padding: 15px; background: var(--green); color: var(--white); border: none; border-radius: 10px; font-family: var(--sans); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s ease; margin-top: 6px; }
 .form-submit:hover { background: var(--green-light); transform: translateY(-1px); }
-.form-note { text-align: center; margin-top: 14px; font-size: 0.78rem; color: var(--stone-600); font-weight: 300; }
+.form-note { text-align: center; margin-top: 14px; font-size: 0.78rem; color: var(--warm-600); font-weight: 300; }
 .faq-section { padding: 80px 24px; }
 .faq-header { margin-bottom: 40px; }
 .faq-list { max-width: 720px; }
@@ -378,12 +378,13 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
       <div class="book-grid">
         <div class="book-info">
           <div class="section-label">Get Started</div>
-          <h2 class="section-title">Request Your Free Landscaping Quote</h2>
-          <p class="section-desc">Tell us about your project and we'll respond with a solution within 24 hours.</p>
+          <h2 class="section-title">Tell Us What You Need</h2>
+          <p class="section-desc">No pressure, no runaround. Just fill out this quick form and we'll get back to you within 24 hours with a clear plan and honest price. It's that simple.</p>
           <div class="book-benefits">
-            <div class="book-benefit"><div class="check">✓</div> Free estimates — no hidden fees</div>
-            <div class="book-benefit"><div class="check">✓</div> Response within 24 hours</div>
-            <div class="book-benefit"><div class="check">✓</div> Serving Lynchburg & surrounding areas</div>
+            <div class="book-benefit"><div class="check">✓</div> Free estimates — always, no hidden fees</div>
+            <div class="book-benefit"><div class="check">✓</div> We respond within 24 hours — usually sooner</div>
+            <div class="book-benefit"><div class="check">✓</div> Serving Lynchburg, Forest, Bedford & beyond</div>
+            <div class="book-benefit"><div class="check">✓</div> No job too big or too small — we mean it</div>
           </div>
         </div>
         <form class="book-form" id="bookingForm">
@@ -397,14 +398,14 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
             <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(434) 555-1234" required></div>
           </div>
           <div class="form-group">
-            <label for="service">Service</label>
+            <label for="service">What Do You Need Help With?</label>
             <select id="service" name="service" required>
               <option value="Landscaping" selected>Landscaping</option>
               <option>Window Therapy</option><option>Roofing</option><option>Flooring</option>
-              <option>Landscaping</option><option>Cleaning Services</option><option>General Construction</option><option>Other</option>
+              <option>Cleaning Services</option><option>General Construction</option><option>Other</option>
             </select>
           </div>
-          <div class="form-group"><label for="description">What are you looking to get done?</label><textarea id="description" name="description" placeholder="Describe your project or problem..." required></textarea></div>
+          <div class="form-group"><label for="description">Tell Us About Your Project</label><textarea id="description" name="description" placeholder="What's going on? Don't worry about getting it perfect — just give us the basics and we'll figure out the rest." required></textarea></div>
           <div class="form-row">
             <div class="form-group">
               <label for="timeline">Timeline</label>
@@ -423,7 +424,7 @@ footer { background: var(--stone-900); color: var(--stone-400); padding: 56px 24
             </div>
           </div>
           <button type="submit" class="form-submit">Submit Request — It's Free</button>
-          <div class="form-note">We respond within 24 hours.</div>
+          <div class="form-note">We'll get back to you within 24 hours. Usually same day.</div>
         </form>
       </div>
     </div>
