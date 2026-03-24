@@ -189,14 +189,13 @@ nav.scrolled { background: rgba(26,26,24,0.97); backdrop-filter: blur(12px); bor
 
 /* ===== STORY — warm tinted bg ===== */
 .story-teaser { padding: 88px 24px; background: var(--cream-dark); }
-.story-teaser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-.story-visual { background: var(--black); border-radius: 16px; height: 360px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.story-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 70%, rgba(59,107,69,0.12), transparent 60%); }
-.story-quote { font-family: var(--serif); font-size: 1.8rem; color: var(--white); text-align: center; padding: 36px; position: relative; z-index: 2; line-height: 1.3; font-weight: 500; }
-.story-quote em { color: var(--green-light); font-style: italic; }
-.story-text p { font-size: 1rem; color: var(--warm-600); line-height: 1.8; margin-bottom: 16px; font-weight: 300; }
-.story-text p:first-of-type { font-size: 1.05rem; color: var(--warm-700); }
-.story-text .scripture { font-family: var(--serif); font-style: italic; color: var(--warm-700); font-size: 1.02rem; border-left: 3px solid var(--green); padding-left: 20px; margin: 24px 0; font-weight: 400; }
+.story-text-first { max-width: 620px; margin: 0 auto; text-align: center; }
+.story-text-first .section-label { text-align: center; }
+.story-text-first .section-title { text-align: center; }
+.story-text-first p { text-align: center; color: var(--warm-600); line-height: 1.8; margin-bottom: 14px; font-weight: 300; }
+.story-big-quote { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.2rem); color: var(--black); text-align: center; padding: 28px 0; margin: 24px 0; border-top: 2px solid var(--green); border-bottom: 2px solid var(--green); line-height: 1.25; }
+.story-big-quote em { color: var(--green); font-style: italic; }
+.story-text-first .scripture { font-family: var(--serif); font-style: italic; color: var(--warm-700); font-size: 1.02rem; border-left: none; padding-left: 0; margin: 24px 0; font-weight: 400; }
 
 /* ===== QUOTE PROCESS EXPLAINER ===== */
 .quote-process { padding: 72px 24px; background: var(--cream); }
@@ -271,8 +270,8 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
   .nav-links.open .dropdown.open .dropdown-menu { display: block; }
   .carousel-wrapper { height: 500px; perspective: 800px; }
   .service-card { width: 240px; padding: 22px 18px; min-height: 180px; }
-  .story-teaser-grid, .book-grid { grid-template-columns: 1fr; }
-  .story-visual { height: 260px; }
+  .book-grid { grid-template-columns: 1fr; }
+  
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .hero-trust { flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -413,17 +412,15 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
   <!-- ===== OUR STORY ===== -->
   <section class="story-teaser" id="story">
     <div class="section-inner">
-      <div class="story-teaser-grid">
-        <div class="story-visual"><div class="story-quote">"We can help you <em>with that.</em>"</div></div>
-        <div class="story-text">
-          <div class="section-label">Our Story</div>
-          <h2 class="section-title">It Started with a Conversation</h2>
-          <p>When our founder bought his first house, he overheard a woman at the store — frustrated, exhausted, and fed up with contractors who wouldn't return her calls. He walked up and said five words that changed everything: <strong>"We can help you with that."</strong></p>
-          <p>That one conversation turned into 36 different jobs for a single homeowner. And it made something clear: there's a real need in our community for people who just show up, do good work, and treat others the way they want to be treated.</p>
-          <div class="scripture">"Love the Lord your God with all your heart, and love your neighbor as yourself."</div>
-          <p>That's the heartbeat of A to Z Solutions. We're not a big corporation. We're your neighbors — and this business is how we serve our community. Every job we take, from hanging a door to rebuilding a roof, is a chance to live that out.</p>
-          <p style="margin-top: 8px;"><a href="quote.html" class="btn-primary" style="margin-top: 12px;">Let Us Help You →</a></p>
-        </div>
+      <div class="story-text-first">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">It Started with a Conversation</h2>
+        <p>When our founder bought his first house, he overheard a woman at the store — frustrated, exhausted, and fed up with contractors who wouldn't return her calls. He walked up and said five words that changed everything:</p>
+        <div class="story-big-quote">"We can help you <em>with that.</em>"</div>
+        <p>That one conversation turned into 36 different jobs for a single homeowner. And it made something clear: there's a real need in our community for people who just show up, do good work, and treat others the way they want to be treated.</p>
+        <div class="scripture">"Love the Lord your God with all your heart, and love your neighbor as yourself."</div>
+        <p>That's the heartbeat of A to Z Solutions. We're not a big corporation. We're your neighbors — and this business is how we serve our community. Every job we take, from hanging a door to rebuilding a roof, is a chance to live that out.</p>
+        <p style="margin-top: 20px;"><a href="quote.html" class="btn-primary">Let Us Help You →</a></p>
       </div>
     </div>
   </section>
