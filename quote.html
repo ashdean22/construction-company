@@ -66,8 +66,8 @@ html { scroll-behavior: smooth; }
 body { font-family: var(--sans); background: var(--cream); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
 /* ===== NAV ===== */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(26,26,24,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: all 0.3s ease; }
-nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.2); }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; backdrop-filter: none; border-bottom: 1px solid transparent; transition: all 0.4s ease; }
+nav.scrolled { background: rgba(26,26,24,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); box-shadow: 0 4px 30px rgba(0,0,0,0.2); }
 .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .nav-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--white); text-decoration: none; letter-spacing: -0.02em; font-weight: 600; }
 .nav-logo span { color: var(--green-light); }
@@ -163,7 +163,7 @@ footer { background: var(--black); color: var(--warm-400); padding: 56px 24px 28
 </head>
 <body>
 
-  <nav id="navbar">
+  <nav id="navbar" class="scrolled">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">A to Z <span>Solutions</span></a>
       <ul class="nav-links" id="navLinks">
