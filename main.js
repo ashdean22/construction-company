@@ -38,67 +38,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
 });
 
 // ===== FORM SUBMISSION =====
-const form = document.getElementById('bookingForm');
-if (form) {
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = this.querySelector('.form-submit');
-    const originalText = btn.textContent;
 
-    // Collect form data
-    const formData = new FormData(this);
-    const data = {};
-    formData.forEach((v, k) => data[k] = v);
-
-    // Add metadata
-    data.submitted_at = new Date().toISOString();
-    data.page_url = window.location.href;
-
-    // UI: loading state
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    btn.style.opacity = '0.7';
-
-    try {
-      const response = await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-
-      if (!response.ok) throw new Error(`Server responded ${response.status}`);
-
-      // Success
-      btn.textContent = '✓ Request Submitted!';
-      btn.style.background = '#22c55e';
-      btn.style.color = '#fff';
-      btn.style.opacity = '1';
-      form.reset();
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.style.color = '';
-        btn.disabled = false;
-      }, 4000);
-
-    } catch (err) {
-      console.error('Form submission error:', err);
-
-      btn.textContent = 'Error — Try Again';
-      btn.style.background = '#ef4444';
-      btn.style.color = '#fff';
-      btn.style.opacity = '1';
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.style.color = '';
-        btn.disabled = false;
-      }, 3000);
-    }
-  });
-}
 
 // ===== SCROLL REVEAL =====
 const observer = new IntersectionObserver((entries) => {
